@@ -20,7 +20,10 @@ class PostForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
     if (this.props.isEditing) {
-      this.props.editPost(this.state, this.props.id);
+      let post = this.state;
+      post.id = this.props.id;
+      post.comments = this.props.comments;
+      this.props.editPost(post);
       this.props.toggleEdit();
     } else {
       this.props.addPost(this.state);
@@ -35,7 +38,7 @@ class PostForm extends Component {
   render() {
     return (
       <div>
-        <h1>New Post</h1>
+        <h1>{this.props.formTitle}</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title</label>
           <input
