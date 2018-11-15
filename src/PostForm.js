@@ -21,9 +21,8 @@ class PostForm extends Component {
     evt.preventDefault();
     if (this.props.isEditing) {
       let post = this.state;
-      post.id = this.props.id;
       post.comments = this.props.comments;
-      this.props.editPost(post);
+      this.props.editPost(post, this.props.postId);
       this.props.toggleEdit();
     } else {
       this.props.addPost(this.state);

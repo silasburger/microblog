@@ -10,7 +10,7 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: {}
     };
     this.addPost = this.addPost.bind(this);
     this.deletePost = this.deletePost.bind(this);
@@ -20,47 +20,40 @@ class Routes extends Component {
   }
 
   addPost(postData) {
-    postData.id = uuid();
     postData.comments = [];
-    this.setState(st => ({ posts: [...st.posts, postData] }));
+    this.setState(st => ({ posts: { ...st.posts, [uuid()]: postData } }));
   }
 
   deletePost(postId) {
-    this.setState(st => ({
-      posts: st.posts.filter(post => post.id !== postId)
-    }));
+    let { [postId]: postData, ...newPosts } = this.state.posts;
+    this.setState({
+      posts: newPosts
+    });
   }
 
-  editPost(postData) {
-    const index = this.state.posts.findIndex(post => post.id === postData.id);
-    this.setState(st => ({
-      posts: [
-        ...st.posts.slice(0, index),
-        postData,
-        ...st.posts.slice(index + 1)
-      ]
-    }));
+  editPost(postData, postId) {
+    this.setState(st => ({ posts: { ...st.posts, [postId]: postData } }));
   }
 
   addComment(comment, postId) {
-    const index = this.state.posts.findIndex(post => post.id === postId);
-    let post = { ...this.state.posts[index] };
-    post.comments.push(comment);
-    this.setState(st => ({
-      posts: [...st.posts.slice(0, index), post, ...st.posts.slice(index + 1)]
-    }));
+    let posts = { ...this.state.posts };
+    posts[postId].comments.push(comment);
+    this.setState({
+      posts
+    });
   }
 
   deleteComment(commentIdx, postId) {
-    const index = this.state.posts.findIndex(post => post.id === postId);
-    let post = { ...this.state.posts[index] };
-    post.comments = [
-      ...post.comments.slice(0, commentIdx),
-      ...post.comments.slice(commentIdx + 1)
+    let posts = { ...this.state.posts };
+    let comments = posts[postId].comments;
+    let newComments = [
+      ...comments.slice(0, commentIdx),
+      ...comments.slice(commentIdx + 1)
     ];
-    this.setState(st => ({
-      posts: [...st.posts.slice(0, index), post, ...st.posts.slice(index + 1)]
-    }));
+    posts[postId].comments = newComments;
+    this.setState({
+      posts
+    });
   }
 
   render() {
@@ -87,9 +80,7 @@ class Routes extends Component {
                 deleteComment={this.deleteComment}
                 {...props}
                 deletePost={this.deletePost}
-                post={this.state.posts.find(
-                  post => post.id === props.match.params.id
-                )}
+                post={this.state.posts[props.match.params.id]}
               />
             )}
           />

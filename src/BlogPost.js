@@ -37,7 +37,7 @@ class BlogPost extends Component {
           comments={this.props.post.comments}
           addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
-          postId={this.props.post.id}
+          postId={this.props.match.params.id}
         />
       </div>
     );
@@ -51,6 +51,7 @@ class BlogPost extends Component {
             isEditing
             formTitle="Edit Post"
             {...this.props.post}
+            postId={this.props.match.params.id}
           />
         ) : (
           post
