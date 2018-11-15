@@ -7,10 +7,11 @@ import {
 } from './actionTypes';
 
 //Action creator for adding a post
-export function addPost(postData) {
+export function addPost(postData, id) {
   return {
     type: ADD_POST,
-    postData
+    postData,
+    id
   };
 }
 

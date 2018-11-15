@@ -8,7 +8,7 @@ class TitleList extends Component {
     return (
       <div>
         {posts.map(post => (
-          <Title post={post[1]} id={post[0]} />
+          <Title key={post[0]} post={post[1]} id={post[0]} />
         ))}
       </div>
     );

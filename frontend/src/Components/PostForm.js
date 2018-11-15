@@ -37,7 +37,10 @@ class PostForm extends Component {
 
   //On cancel redirect to home
   handleClick(evt) {
-    this.props.history.push('/');
+    if (this.props.isEditing) {
+      this.props.toggleEdit();
+    }
+    this.props.history.push(this.props.cancelUrl);
   }
 
   render() {

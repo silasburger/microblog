@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PostForm from '../Components/PostForm';
 import { connect } from 'react-redux';
 import { addPost } from '../actions';
+import uuid from 'uuid/v4'
 
 class NewPost extends Component {
   constructor(props) {
@@ -11,12 +12,13 @@ class NewPost extends Component {
 
   //Dispatch an action to add a post
   add(postData) {
-    this.props.addPost(postData);
+    this.props.addPost(postData, uuid());
   }
 
   render() {
     return (
       <PostForm
+        cancelUrl='/'
         formTitle="New Post"
         addPost={this.add}
         history={this.props.history}

@@ -51,6 +51,8 @@ class BlogPost extends Component {
       <div>
         {this.state.isEditing ? (
           <PostForm
+            history={this.props.history}
+            cancelUrl={`/${this.props.match.params.id}`}
             toggleEdit={this.toggleEdit}
             editPost={this.props.editPost}
             isEditing
@@ -66,7 +68,7 @@ class BlogPost extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   return {
     posts: state.posts
   };
