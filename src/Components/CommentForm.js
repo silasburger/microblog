@@ -10,10 +10,12 @@ class PostForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //Control form values
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value });
   }
 
+  //Add a comment to the blog post
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.addComment(this.state.comment, this.props.postId);

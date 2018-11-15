@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import PostForm from './PostForm';
-import Comments from './Comments';
+import PostForm from '../Components/PostForm';
+import Comments from '../Components/Comments';
+import { addComment, deleteComment, editPost, deletePost } from '../actions';
+import { connect } from 'react-redux';
 
 class BlogPost extends Component {
   constructor(props) {
@@ -12,29 +14,32 @@ class BlogPost extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
+  //Dispatch a delete post action and redirect to home
   handleDelete() {
-    this.props.deletePost(this.props.post.id);
+    this.props.deletePost(this.props.match.params.id);
     this.props.history.push('/');
   }
 
+  //Toggle editing the form
   toggleEdit() {
     this.setState(st => ({ isEditing: !st.isEditing }));
   }
 
   render() {
-    if (!this.props.post) {
+    let post = this.props.posts[this.props.match.params.id];
+    if (!post) {
       return <h1>Can't find post</h1>;
     }
 
-    const post = (
+    const postRend = (
       <div>
-        <h1>{this.props.post.title}</h1>
-        <i>{this.props.post.description}</i>
-        <p>{this.props.post.body}</p>
+        <h1>{post.title}</h1>
+        <i>{post.description}</i>
+        <p>{post.body}</p>
         <button onClick={this.toggleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
         <Comments
-          comments={this.props.post.comments}
+          comments={post.comments}
           addComment={this.props.addComment}
           deleteComment={this.props.deleteComment}
           postId={this.props.match.params.id}
@@ -50,15 +55,24 @@ class BlogPost extends Component {
             editPost={this.props.editPost}
             isEditing
             formTitle="Edit Post"
-            {...this.props.post}
+            {...post}
             postId={this.props.match.params.id}
           />
         ) : (
-          post
+          postRend
         )}
       </div>
     );
   }
 }
 
-export default BlogPost;
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { addComment, deleteComment, editPost, deletePost }
+)(BlogPost);
