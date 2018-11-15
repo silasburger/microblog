@@ -6,6 +6,13 @@ import {
   DELETE_POST
 } from './actionTypes';
 
+//Action creator for getting posts
+export function getPosts() {
+  return async function(dispatch) {
+    await get
+  }
+}
+
 //Action creator for adding a post
 export function addPost(postData, id) {
   return {
