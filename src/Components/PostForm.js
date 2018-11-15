@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class PostForm extends Component {
+  //Default state if post passed in, otherwise deafult to empty string
   constructor(props) {
     super(props);
     this.state = {
@@ -13,21 +14,28 @@ class PostForm extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  //Conrol the form inputs
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value });
   }
 
+  //Handle submitting the form
   handleSubmit(evt) {
     evt.preventDefault();
+    //If the post is being edited then call the edit function
     if (this.props.isEditing) {
-      this.props.editPost(this.state, this.props.id);
+      let post = this.state;
+      post.comments = this.props.comments;
+      this.props.editPost(post, this.props.postId);
       this.props.toggleEdit();
     } else {
+      //Otherwise call the add post function
       this.props.addPost(this.state);
       this.props.history.push('/');
     }
   }
 
+  //On cancel redirect to home
   handleClick(evt) {
     this.props.history.push('/');
   }
@@ -35,7 +43,7 @@ class PostForm extends Component {
   render() {
     return (
       <div>
-        <h1>New Post</h1>
+        <h1>{this.props.formTitle}</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">Title</label>
           <input
