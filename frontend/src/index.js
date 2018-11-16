@@ -6,11 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './rootReducer';
+import root from './Reducers/root';
 import thunk from 'redux-thunk';
 
 const store = createStore(
-  rootReducer,
+  root,
   compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
       window.__REDUX_DEVTOOLS_EXTENSION__(),

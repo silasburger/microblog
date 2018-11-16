@@ -3,6 +3,10 @@ import Title from '../Components/Title';
 import { connect } from 'react-redux';
 
 class TitleList extends Component {
+  componentDidMount() {
+    //Call function to get titles
+  }
+
   render() {
     let posts = Object.entries(this.props.posts);
     return (
