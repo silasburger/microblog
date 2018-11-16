@@ -14,6 +14,10 @@ class BlogPost extends Component {
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
+  componentDidMount() {
+    //Get the post from the backend
+  }
+
   //Dispatch a delete post action and redirect to home
   handleDelete() {
     this.props.deletePost(this.props.match.params.id);
@@ -26,7 +30,7 @@ class BlogPost extends Component {
   }
 
   render() {
-    let post = this.props.posts[this.props.match.params.id];
+    let post = this.props.post;
     if (!post) {
       return <h1>Can't find post</h1>;
     }
@@ -70,7 +74,7 @@ class BlogPost extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    posts: state.posts
+    post: state.posts[ownProps.match.params.id]
   };
 }
 

@@ -4,7 +4,7 @@ import {
   EDIT_POST,
   DELETE_COMMENT,
   DELETE_POST
-} from './actionTypes';
+} from '../actionTypes';
 
 const INITIAL_STATE = {
   posts: {}
