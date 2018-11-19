@@ -5,8 +5,8 @@ class Title extends Component {
   render() {
     return (
       <div>
-        <Link to={`/${this.props.id}`}>{this.props.post.title}</Link>
-        <i>{this.props.post.description}</i>
+        <Link to={`/${this.props.title.id}`}>{this.props.title.title}</Link>
+        <i>{this.props.title.description}</i>
       </div>
     );
   }

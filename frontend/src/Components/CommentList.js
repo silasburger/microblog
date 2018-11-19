@@ -15,14 +15,14 @@ class CommentList extends Component {
   render() {
     return (
       <ul>
-        {this.props.comments.map((comment, idx) => (
+        {this.props.comments.map((comment) => (
           <li key={uuid()}>
-            <button data-id={idx}
+            <button data-id={comment.id}
               onClick={this.handleDelete}
             >
               X
             </button>
-            {comment}
+            {comment.text}
           </li>
         ))}
       </ul>

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import Title from '../Components/Title';
 import { connect } from 'react-redux';
+import { getTitles } from '../actions';
 
 class TitleList extends Component {
   componentDidMount() {
     //Call function to get titles
+    if(!this.props.titles.length) this.props.getTitles();
+    
   }
 
   render() {
-    let posts = Object.entries(this.props.posts);
+    let titles =this.props.titles;
     return (
       <div>
-        {posts.map(post => (
-          <Title key={post[0]} post={post[1]} id={post[0]} />
+        {titles.map(title => (
+          <Title key={title.id} title={title} />
         ))}
       </div>
     );
@@ -22,8 +25,8 @@ class TitleList extends Component {
 //Map the state form redux so that react has access to the posts
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    titles: state.titles
   };
 }
 
-export default connect(mapStateToProps)(TitleList);
+export default connect(mapStateToProps, { getTitles })(TitleList);

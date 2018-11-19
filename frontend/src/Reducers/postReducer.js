@@ -2,16 +2,18 @@ import {
   ADD_POST,
   DELETE_POST,
   EDIT_POST,
-  LOAD_POST,
-  DELETE_COMMENT,
-  ADD_COMMENT,
-  LOAD_COMMENTS,
-  EDIT_COMMENT
+  LOAD_POST
 } from '../actionTypes';
+import {commentReducer} from './commentReducer';
 
 const INITIAL_STATE = {};
 
 export default function postReducer(state = INITIAL_STATE, action) {
+
+  if(action.postId) {
+    state = { ...state, [action.postId]: {...state[action.postId], comments:commentReducer(state[action.postId].comments, action)}};
+  }
+
   switch (action.type) {
     case ADD_POST:
       return { ...state, [action.id]: action.postData };
@@ -25,52 +27,7 @@ export default function postReducer(state = INITIAL_STATE, action) {
       return { ...state, [action.postId]: action.postData };
 
     case LOAD_POST:
-      return { ...state, [action.id]: action.postData };
-
-    case ADD_COMMENT:
-      return {
-        ...state,
-        [action.postId]: {
-          ...state.posts[action.postId],
-          comments: [...state.posts[action.postId].comments, action.comment]
-        }
-      };
-
-    case DELETE_COMMENT:
-      return {
-        ...state,
-        [action.postId]: {
-          ...state.posts[action.postId],
-          comments: state.posts[action.postId].comments.filter(
-            comment => action.commentId !== comment.id
-          )
-        }
-      };
-
-    case LOAD_COMMENTS:
-      return {
-        ...state,
-        [action.postId]: {
-          ...state.posts[action.postId],
-          comments: action.comments
-        }
-      };
-
-    case EDIT_COMMENT:
-      let commentIdx = state.posts[action.postId].comments.findIndex(
-        comment => comment.id === action.editComment.id
-      );
-      return {
-        ...state,
-        [action.postId]: {
-          ...state.posts[action.postId],
-          comments: [
-            ...state.posts[action.postId].comments.slice(0, commentIdx),
-            action.editComment,
-            ...state.posts[action.postId].comments.slice(commentIdx + 1)
-          ]
-        }
-      };
+      return { ...state, [action.post.id]: action.post };
 
     default:
       return state;

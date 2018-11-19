@@ -19,6 +19,7 @@ import MicroblogApi from './MicroblogApi';
 export function getTitles() {
   return async function(dispatch) {
     let titles = await MicroblogApi.getTitles();
+
     dispatch(gotTitles(titles));
   };
 }
@@ -63,8 +64,8 @@ function addedPost(postData, id) {
 //Action creator for deleting a post
 export function deletePost(postId) {
   return async function(dispatch) {
-    let deletedP = await MicroblogApi.deletedPost(postId);
-    dispatch(deletedPost(deletedP.id));
+    await MicroblogApi.deletePost(postId);
+    dispatch(deletedPost(+postId));
   };
 }
 
@@ -145,12 +146,12 @@ function addedComment(comment, postId) {
 //Action creator for adding a comment
 export function deleteComment(commentId, postId) {
   return async function(dispatch) {
-    let deletedC = await MicroblogApi.deleteComment(postId, commentId);
-    dispatch(deletedComment(deletedC.id, postId));
+    await MicroblogApi.deleteComment(postId, commentId);
+    dispatch(deletedComment(commentId, postId));
   };
 }
 
-//Action creator for deleted a comment
+//Action creator for deleting a comment
 function deletedComment(commentId, postId) {
   return {
     type: DELETE_COMMENT,

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PostForm from '../Components/PostForm';
 import Comments from '../Components/Comments';
-import { addComment, deleteComment, editPost, deletePost } from '../actions';
+import { addComment, deleteComment, editPost, deletePost, getPost } from '../actions';
 import { connect } from 'react-redux';
 
 class BlogPost extends Component {
@@ -16,6 +16,7 @@ class BlogPost extends Component {
 
   componentDidMount() {
     //Get the post from the backend
+    if(!this.props.post) this.props.getPost(this.props.match.params.id);
   }
 
   //Dispatch a delete post action and redirect to home
@@ -80,5 +81,5 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(
   mapStateToProps,
-  { addComment, deleteComment, editPost, deletePost }
+  { addComment, deleteComment, editPost, deletePost, getPost }
 )(BlogPost);
