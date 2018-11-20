@@ -19,7 +19,7 @@ export default class MicroblogApi {
     const res = await axios.post(
       `${BASE_URL}/api/posts/${postId}/vote/${direction}`
     );
-    return res.data;
+    return res.data.votes;
   }
 
   static async addPost(data) {

@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import Title from '../Components/Title';
 import { connect } from 'react-redux';
-import { getTitles } from '../actions';
+import { getTitles, addVote } from '../actions';
 
 class TitleList extends Component {
+  constructor(props) {
+    super(props);
+    this.handleVote = this.handleVote.bind(this);
+  }
+
   componentDidMount() {
     //Call function to get titles
-    if(!this.props.titles.length) this.props.getTitles();
-    
+    if (!this.props.titles.length) this.props.getTitles();
+  }
+
+  handleVote(postId, direction) {
+    this.props.addVote(postId, direction);
   }
 
   render() {
-    let titles =this.props.titles;
+    let titles = this.props.titles;
     return (
       <div>
         {titles.map(title => (
-          <Title key={title.id} title={title} />
+          <Title key={title.id} title={title} handleVote={this.handleVote} />
         ))}
       </div>
     );
@@ -29,4 +37,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getTitles })(TitleList);
+export default connect(
+  mapStateToProps,
+  { getTitles, addVote }
+)(TitleList);

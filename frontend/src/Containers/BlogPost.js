@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import PostForm from '../Components/PostForm';
 import Comments from '../Components/Comments';
-import { addComment, deleteComment, editPost, deletePost, getPost } from '../actions';
+import {
+  addComment,
+  deleteComment,
+  editPost,
+  deletePost,
+  getPost,
+  addVote
+} from '../actions';
 import { connect } from 'react-redux';
 
 class BlogPost extends Component {
@@ -12,11 +19,16 @@ class BlogPost extends Component {
     };
     this.handleDelete = this.handleDelete.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.handleVote = this.handleVote.bind(this);
   }
 
   componentDidMount() {
     //Get the post from the backend
-    if(!this.props.post) this.props.getPost(this.props.match.params.id);
+    if (!this.props.post) this.props.getPost(this.props.match.params.id);
+  }
+
+  handleVote(evt) {
+    this.props.addVote(this.props.post.id, evt.target.id);
   }
 
   //Dispatch a delete post action and redirect to home
@@ -43,6 +55,13 @@ class BlogPost extends Component {
         <p>{post.body}</p>
         <button onClick={this.toggleEdit}>Edit</button>
         <button onClick={this.handleDelete}>Delete</button>
+        <b>Votes:{post.votes}</b>
+        <button id="up" onClick={this.handleVote}>
+          up
+        </button>
+        <button id="down" onClick={this.handleVote}>
+          down
+        </button>
         <Comments
           comments={post.comments}
           addComment={this.props.addComment}
@@ -81,5 +100,5 @@ function mapStateToProps(state, ownProps) {
 
 export default connect(
   mapStateToProps,
-  { addComment, deleteComment, editPost, deletePost, getPost }
+  { addComment, deleteComment, editPost, deletePost, getPost, addVote }
 )(BlogPost);
