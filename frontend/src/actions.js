@@ -165,7 +165,7 @@ function deletedComment(commentId, postId) {
 //Action creator for adding a vote
 export function addVote(postId, direction) {
   return async function(dispatch) {
-    let votes = await MicroblogApi.addVote(postId, direction);
+    let votes = await MicroblogApi.postVote(postId, direction);
     dispatch(addedVote(postId, votes));
   };
 }
