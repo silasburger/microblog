@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Title from '../Components/Title';
 import { connect } from 'react-redux';
 import { getTitles, addVote } from '../actions';
+import './TitleList.css';
 
 class TitleList extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class TitleList extends Component {
   render() {
     let titles = this.props.titles;
     return (
-      <div>
+      <div className="title-list-container">
         {titles.map(title => (
           <Title key={title.id} title={title} handleVote={this.handleVote} />
         ))}

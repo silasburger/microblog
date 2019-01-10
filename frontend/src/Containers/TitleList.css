@@ -1,0 +1,10 @@
+.title-list-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.title-list-container .card {
+  width: 40%;
+  text-align:center;
+}

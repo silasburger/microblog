@@ -72,6 +72,7 @@ class PostForm extends Component {
           <FormGroup>
             <Label htmlFor="body">Body</Label>
             <Input
+              rows="10"
               type="textarea"
               name="body"
               id="body"
@@ -79,7 +80,7 @@ class PostForm extends Component {
               onChange={this.handleChange}
             />
           </FormGroup>
-          <Button>Save</Button>
+          <Button color="primary" className="mr-3">Save</Button>
           <Button onClick={this.handleClick} type="button">
             Cancel
           </Button>
