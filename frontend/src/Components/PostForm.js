@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, FormGroup, Label, Input, Button, TextArea } from 'reactstrap';
 
 class PostForm extends Component {
   //Default state if post passed in, otherwise deafult to empty string
@@ -45,39 +46,45 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.formTitle}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            value={this.state.description}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="body">Body</label>
-          <textarea
-            type="text"
-            name="body"
-            id="body"
-            value={this.state.body}
-            onChange={this.handleChange}
-          />
-          <button>Save</button>
-          <button onClick={this.handleClick} type="button">
+      <>
+        <h1 className="m-3">{this.props.formTitle}</h1>
+        <Form onSubmit={this.handleSubmit} className="m-3">
+          <FormGroup>
+            <Label htmlFor="title">Title</Label>
+            <Input
+              type="text"
+              name="title"
+              id="title"
+              value={this.state.title}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="description">Description</Label>
+            <Input
+              type="text"
+              name="description"
+              id="description"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="body">Body</Label>
+            <Input
+              type="textarea"
+              name="body"
+              id="body"
+              value={this.state.body}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <Button>Save</Button>
+          <Button onClick={this.handleClick} type="button">
             Cancel
-          </button>
-        </form>
-      </div>
+          </Button>
+        </Form>
+      </>
     );
   }
 }

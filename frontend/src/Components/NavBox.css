@@ -1,0 +1,9 @@
+.navbox-container h1{
+  font-size: 2.5em;
+}
+
+.navbox-container {
+  font-size: 1.3em;
+  height: 200px;
+  padding: 20px;
+}

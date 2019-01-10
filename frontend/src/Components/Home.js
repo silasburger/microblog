@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p>Welcome to Microblog</p>
+        <h1 className="ml-3">Welcome to Microblog</h1>
         <TitleList />
       </div>
     );
