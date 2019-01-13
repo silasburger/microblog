@@ -3,7 +3,7 @@
 const { Client } = require("pg");
 const { DB_URI } = require("./config");
 
-const client = new Client("postgresql:///microblog");
+const client = new Client(`postgresql:///${DB_URI}`);
 
 client.connect();
 
