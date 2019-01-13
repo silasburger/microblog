@@ -1,10 +1,19 @@
 .title-list-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  padding: 5px;
 }
 
 .title-list-container .card {
-  width: 40%;
-  text-align:center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #008cba;
+}
+
+.title-list-container > div {
+  width: 400px;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
 }

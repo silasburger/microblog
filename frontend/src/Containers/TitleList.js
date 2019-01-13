@@ -24,7 +24,9 @@ class TitleList extends Component {
     return (
       <div className="title-list-container">
         {titles.map(title => (
-          <Title key={title.id} title={title} handleVote={this.handleVote} />
+          <div>
+            <Title key={title.id} title={title} handleVote={this.handleVote} />
+          </div>
         ))}
       </div>
     );

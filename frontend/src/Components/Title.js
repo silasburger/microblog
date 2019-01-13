@@ -14,14 +14,14 @@ class Title extends PureComponent {
 
   render() {
     return (
-      <Card className="mt-4">
+      <Card>
         <Link to={`/${this.props.title.id}`}>{this.props.title.title}</Link>
         <i>{this.props.title.description}</i>
         <b>Votes: {this.props.title.votes}</b>
-        <Button id="up" onClick={this.handleVote}>
+        <Button color="info" className="m-1" id="up" onClick={this.handleVote}>
           up
         </Button>
-        <Button id="down" onClick={this.handleVote}>
+        <Button color="warning" className="m-1" id="down" onClick={this.handleVote}>
           down
         </Button>
       </Card>
