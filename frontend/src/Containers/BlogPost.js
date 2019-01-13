@@ -10,6 +10,7 @@ import {
   addVote
 } from '../actions';
 import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 
 class BlogPost extends Component {
   constructor(props) {
@@ -49,19 +50,21 @@ class BlogPost extends Component {
     }
 
     const postRend = (
-      <div>
-        <h1>{post.title}</h1>
-        <i>{post.description}</i>
-        <p>{post.body}</p>
-        <button onClick={this.toggleEdit}>Edit</button>
-        <button onClick={this.handleDelete}>Delete</button>
-        <b>Votes:{post.votes}</b>
-        <button id="up" onClick={this.handleVote}>
+      <div className="post-container m-3">
+        <div className="mb-2">
+          <h1>{post.title}</h1>
+          <i>{post.description}</i>
+          <p>{post.body}</p>
+          <Button onClick={this.toggleEdit}>Edit</Button>
+          <Button onClick={this.handleDelete}>Delete</Button>
+        </div>
+        <b>Votes: {post.votes}</b>
+        <Button id="up" onClick={this.handleVote}>
           up
-        </button>
-        <button id="down" onClick={this.handleVote}>
+        </Button>
+        <Button id="down" onClick={this.handleVote}>
           down
-        </button>
+        </Button>
         <Comments
           comments={post.comments}
           addComment={this.props.addComment}

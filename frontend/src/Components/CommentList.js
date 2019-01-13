@@ -8,21 +8,16 @@ class CommentList extends Component {
   }
 
   handleDelete(evt) {
-     let cid = +evt.target.dataset.id;
-     this.props.deleteComment(cid, this.props.postId)
+    let cid = +evt.target.dataset.id;
+    this.props.deleteComment(cid, this.props.postId);
   }
 
   render() {
     return (
       <ul>
-        {this.props.comments.map((comment) => (
+        {this.props.comments.map(comment => (
           <li key={uuid()}>
-            <button data-id={comment.id}
-              onClick={this.handleDelete}
-            >
-              X
-            </button>
-            {comment.text}
+            {comment.text} <i class="fas fa-times" data-id={comment.id} onClick={this.handleDelete}/>
           </li>
         ))}
       </ul>

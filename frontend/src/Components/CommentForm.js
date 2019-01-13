@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Form, Input, FormGroup } from 'reactstrap';
 
 class PostForm extends Component {
   constructor(props) {
@@ -26,9 +27,10 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
+      <Form onSubmit={this.handleSubmit}>
+        <FormGroup>
+          <input inline
+            className="w-25"
             type="text"
             name="comment"
             id="comment"
@@ -36,9 +38,9 @@ class PostForm extends Component {
             onChange={this.handleChange}
             placeholder="New Comment"
           />
-          <button>Add</button>
-        </form>
-      </div>
+          <button className="ml-1">Add</button>
+        </FormGroup>
+      </Form>
     );
   }
 }
