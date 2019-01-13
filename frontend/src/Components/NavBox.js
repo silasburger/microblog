@@ -7,7 +7,7 @@ class NavBox extends Component {
     return (
       <div className="navbox-container jumbotron text-left m-3">
         <h1 className="mb-3">Microblog</h1>
-        <p className="mb-3">Get in the Rithm of blogging!</p>
+        <p className="mb-3">Get in the rhythm of blogging!</p>
         <NavLink exact className="mr-4" to="/">
           Blog
         </NavLink>
