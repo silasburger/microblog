@@ -46,6 +46,18 @@ npm start
 
 ---
 
+##Technologies
+
+- React
+- Create-React-App
+- Redux 
+- Redux Thunk
+- Axios 
+- Bootstrap
+- Reactstrap
+
+--- 
+
 ## Features to add
 
 - Add auth to backend for signup/login functionality
