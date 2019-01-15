@@ -2,16 +2,18 @@ App deployed at : <a href="https://microblogly-frontend.herokuapp.com/">https://
 
 # Microblog - Blogging app 
 
-I built the frontend for this app using React (CRA setup), Redux, and Redux Thunk. The goal was to create an app that has a fundamentally sound component heirarchy. Another goal was to intelligently connect components to redux to prop drilling
+My team and I built the frontend for this app using React (CRA setup), Redux, and Redux Thunk. The goal was to create an app that has a fundamentally sound component heirarchy. Another goal was to intelligently connect components to redux to prop drilling
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Features](#features)
+- [Technologies](#technologies)
+- [Features to add](#features-to-add)
 - [Team](#team)
 
 ## Installation
-###Backend Setup:  
+### Backend Setup:  
 
 ```shell
 cd backend
@@ -20,7 +22,7 @@ node server.js
 ```
 
 
-###Frontend Setup:
+### Frontend Setup:
 
 ```shell
 cd front
@@ -46,7 +48,7 @@ npm start
 
 ---
 
-##Technologies
+## Technologies
 
 - React
 - Create-React-App
@@ -66,7 +68,7 @@ npm start
 
 ## Team
 
-| <a href="https://github.com/silasburger" target="_blank">**Hinesh Amin**</a>
-| <a href="https://github.com/silasburger" target="_blank">`github.com/hineshamin`</a> | 
+| **Hinesh Amin**
+| <a href="https://github.com/hineshamin" target="_blank">`github.com/hineshamin`</a> | 
 
 
