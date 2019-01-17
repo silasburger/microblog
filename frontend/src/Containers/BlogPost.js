@@ -59,6 +59,7 @@ class BlogPost extends Component {
           <Button onClick={this.handleDelete}>Delete</Button>
         </div>
         <b>Votes: {post.votes}</b>
+        <br />
         <Button id="up" onClick={this.handleVote}>
           up
         </Button>

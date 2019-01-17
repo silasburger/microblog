@@ -71,4 +71,7 @@ npm start
 | **Hinesh Amin**
 | <a href="https://github.com/hineshamin" target="_blank">`github.com/hineshamin`</a> | 
 
+| **Silas Burger**
+| <a href="https://github.com/silasburger" target="_blank">`github.com/silasburger`</a> | 
+
 
