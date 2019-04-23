@@ -26,7 +26,7 @@ router.get('/', async function(req, res, next) {
               p.description,
               p.votes
       FROM posts p 
-      ORDER BY p.id
+      ORDER BY p.votes DESC
       `
     );
     return res.json(result.rows);
