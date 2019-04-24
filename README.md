@@ -50,6 +50,7 @@ npm start
 
 ## Heirarchy
 
+```
 App
 ├─┬ components/Home/Home
 │ └── containers/TitleList/TitleList
@@ -60,6 +61,7 @@ App
   ├── components/CommentList/CommentList
   ├── components/PostDisplay/PostDisplay
   └── components/PostForm/PostForm
+```
   
 ---
 
