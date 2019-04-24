@@ -48,6 +48,21 @@ npm start
 
 ---
 
+## Heirarchy
+
+App
+├─┬ components/Home/Home
+│ └── containers/TitleList/TitleList
+├─┬ containers/NewPost/NewPost
+│ └── components/PostForm/PostForm
+└─┬ containers/Post/Post
+  ├── components/CommentForm/CommentForm
+  ├── components/CommentList/CommentList
+  ├── components/PostDisplay/PostDisplay
+  └── components/PostForm/PostForm
+  
+---
+
 ## Technologies
 
 - React
